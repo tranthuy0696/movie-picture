@@ -134,6 +134,15 @@ jobs:
     needs: [build]
 
     steps:
+      - name: Replace Docker Image in deployment.yaml
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REPOSITORY: frontend
+          IMAGE_TAG: latest
+        run: |
+          kustomize edit set image frontend=$REGISTRY/$REPOSITORY:$IMAGE_TAG
+        working-directory: ${{ env.WORKING_DIR}}/k8s
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:
@@ -149,15 +158,6 @@ jobs:
       - name: Update kubeconfig
         run: |
           aws eks update-kubeconfig --name ${{ env.CLUSTER_NAME }}
-
-      - name: Replace Docker Image in deployment.yaml
-        env:
-          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          REPOSITORY: fondend
-          IMAGE_TAG: latest
-        run: |
-          kustomize edit set image frontend=$REGISTRY/$REPOSITORY:$IMAGE_TAG
-        working-directory: ${{ env.WORKING_DIR}}/k8s
 
       - name: Apply Kubernetes resources
         run: |
