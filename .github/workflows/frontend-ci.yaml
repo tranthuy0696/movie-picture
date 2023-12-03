@@ -8,11 +8,11 @@ on:
     branches:
       - main
     paths:
-      - "started/fontend/**"
+      - "starter/frontend/**"
 
 env:
   NODE_VERSION: 18.x
-  WORKING_DIR: "./starter/fontend"
+  WORKING_DIR: "starter/frontend"
 
 jobs:
   lint:

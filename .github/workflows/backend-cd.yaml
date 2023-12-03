@@ -47,7 +47,7 @@ jobs:
           pipenv install
 
       - name: Run eslint
-        run: pip run lint
+        run: pipenv run lint
 
   test:
     name: Run test

@@ -12,7 +12,7 @@ on:
 
 env:
   PYTHON_VERSION: 3.11
-  WORKING_DIR: "./starter/backend"
+  WORKING_DIR: "starter/backend"
 
 jobs:
   lint:
@@ -46,7 +46,7 @@ jobs:
           pipenv install
 
       - name: Run eslint
-        run: pip run lint
+        run: pipenv run lint
 
   test:
     name: Run test
