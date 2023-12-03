@@ -150,11 +150,6 @@ jobs:
         run: |
           aws eks update-kubeconfig --name ${{ env.CLUSTER_NAME }}
 
-      - name: Run init.sh
-        run: |
-          ./init.sh || true
-        working-directory: setup
-
       - name: Replace Docker Image in deployment.yaml
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
