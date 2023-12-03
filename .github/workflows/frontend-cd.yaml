@@ -151,8 +151,9 @@ jobs:
           aws eks update-kubeconfig --name ${{ env.CLUSTER_NAME }}
 
       - name: Run init.sh script file
-        run: ./init.sh
-        working-directory: ${{ env.WORKING_DIR }}/setup
+        run: |
+          chmod +x "${env.WORKING_DIR}/setup/init.sh"
+          "${env.WORKING_DIR}/setup/init.sh"
 
       - name: Set Docker image in Kustomize
         env:
