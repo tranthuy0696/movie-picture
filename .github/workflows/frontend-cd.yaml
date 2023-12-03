@@ -150,8 +150,8 @@ jobs:
         run: |
           aws eks update-kubeconfig --name ${{ env.CLUSTER_NAME }}
 
-      - name: Run init.sh script file
-        run: bash ${GITHUB_WORKSPACE}/../${{ env.WORKING_DIR}}/setup/init.sh
+      # - name: Run init.sh script file
+      #   run: bash ${GITHUB_WORKSPACE}/../${{ env.WORKING_DIR}}/setup/init.sh
 
       - name: Set Docker image in Kustomize
         env:
@@ -159,9 +159,9 @@ jobs:
           REPOSITORY: backend
           IMAGE_TAG: latest
         run: kustomize edit set image backend=$REGISTRY/$REPOSITORY:$IMAGE_TAG
-        working-directory: ../${{ env.WORKING_DIR }}/k8s
+        working-directory: ${{ env.WORKING_DIR }}/k8s
 
       - name: Apply Kubernetes resources
         run: |
           kustomize build | kubectl apply -f -
-        working-directory: ../${{ env.WORKING_DIR }}/k8s
+        working-directory: ${{ env.WORKING_DIR }}/k8s
