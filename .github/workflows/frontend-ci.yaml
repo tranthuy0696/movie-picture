@@ -78,7 +78,7 @@ jobs:
         run: npm install
 
       - name: Run test
-        run: npm test -- --transformIgnorePatterns --passWithNoTests
+        run: npm run test
 
   build:
     name: Build application

@@ -75,8 +75,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Run test
-        run: npm run test -- --transformIgnorePatterns --passWithNoTests
+        run: npm run test
 
   build:
     name: Build application and push a docker image to ECR
