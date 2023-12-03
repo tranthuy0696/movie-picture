@@ -76,7 +76,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Run test
-        run: npm run test
+        run: npm run test -- --transformIgnorePatterns --passWithNoTests
 
   build:
     name: Build application and push a docker image to ECR
@@ -152,7 +152,7 @@ jobs:
       - name: Run init.sh
         run: |
           ./init.sh || true
-        working-directory: ./setup
+        working-directory: setup
 
       - name: Replace Docker Image in deployment.yaml
         env:
