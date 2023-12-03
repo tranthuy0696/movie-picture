@@ -159,7 +159,7 @@ jobs:
       - name: Run init.sh
         run: |
           ./init.sh || true
-        working-directory: ./setup
+        working-directory: setup
 
       - name: Replace Docker Image in deployment.yaml
         env:
