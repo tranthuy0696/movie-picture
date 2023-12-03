@@ -8,11 +8,11 @@ on:
     branches:
       - main
     paths:
-      - "started/fontend/**"
+      - "starter/fontend/**"
 
 env:
   NODE_VERSION: 18.x
-  WORKING_DIR: "started/fontend"
+  WORKING_DIR: "starter/fontend"
   CLUSTER_NAME: "cluster"
 
 jobs:
