@@ -12,7 +12,7 @@ on:
 
 env:
   PYTHON_VERSION: 3.11
-  WORKING_DIR: "./started/backend"
+  WORKING_DIR: "started/backend"
   CLUSTER_NAME: "cluster"
 
 jobs:
